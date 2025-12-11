@@ -1,0 +1,360 @@
+/* ===========================
+   GLOBAL LAYOUT / BACKGROUND
+   =========================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* Red-ish gradient backdrop */
+    background: radial-gradient(circle at top, #ffe3e3 0, #d30000 40%, #2b0000 100%);
+    color: #111;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ===========================
+   HEADER / LOGO / NAV
+   =========================== */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.03em;
+    text-shadow: -2px -2px 4px rgba(255, 69, 0, 0.9);
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 10px;
+    padding: 8px 16px;
+    box-shadow: -3px -3px 5px orangered, 3px 3px 6px rgba(0,0,0,0.4);
+}
+
+header nav {
+    font-size: 0.95rem;
+}
+
+header nav a {
+    color: #f8f8f8;
+    text-decoration: none;
+    margin: 0 6px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* hides the <hr> right below header if present */
+header + hr {
+    display: none;
+}
+
+/* ===========================
+   PAGE CARD CONTAINER
+   =========================== */
+
+.page-card {
+    margin: 30px auto;
+    max-width: 520px;
+    padding: 25px 30px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+}
+
+.page-card.wide {
+    max-width: 900px; /* for history / analytics tables */
+}
+
+.page-card h2 {
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+/* ===========================
+   FORMS
+   =========================== */
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-container label {
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #b30000;
+    box-shadow: 0 0 0 2px rgba(179,0,0,0.2);
+}
+
+.form-container textarea {
+    resize: vertical;
+}
+
+.form-container button {
+    margin-top: 15px;
+    padding: 10px;
+    background: #b30000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.form-container button:hover {
+    background: #e63636;
+}
+
+/* success / error message */
+.flash-message {
+    text-align: center;
+    font-weight: 600;
+    color: #b30000;
+    margin-bottom: 10px;
+}
+
+/* ===========================
+   TABLES (Progress History / Analytics)
+   =========================== */
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.data-table th {
+    background: #b30000;
+    color: #fff;
+    position: sticky;
+    top: 0;
+}
+
+.data-table tr:nth-child(even) {
+    background: #f7f7f7;
+}
+
+.data-table tr:hover {
+    background: #ffe6e6;
+}
+
+/* small info text under cards */
+.card-note {
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+
+footer {
+    text-align: center;
+    padding: 10px 0 15px;
+    font-size: 0.8rem;
+    color: #f5f5f5;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 20px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .page-card,
+    .page-card.wide {
+        max-width: 100%;
+        padding: 20px 16px;
+    }
+}
+
+.btn-danger {
+    display: inline-block;
+    background: #c0392b;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-danger:hover {
+    background: #e74c3c;
+}
+
+/* ===========================
+   DARK MODE ADD-ON
+   (Does not change light theme;
+    applies only when body.dark is set)
+   =========================== */
+
+.theme-toggle {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #f8f8f8;
+}
+
+.theme-toggle img {
+    width: 40px;
+    cursor: pointer;
+    /* make it stand out on both light & dark backgrounds */
+    background: #ffffff;
+    border-radius: 999px;
+    padding: 3px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+/* optional: tweak icon background a bit in dark mode */
+body.dark .theme-toggle {
+    color: #f5f5f5;
+}
+
+body.dark .theme-toggle img {
+    background: #222;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.4);
+}
+
+
+/* Root dark mode styles */
+body.dark {
+    background: radial-gradient(circle at top, #1b1b1b 0, #000000 60%, #000000 100%);
+    color: #f5f5f5;
+}
+
+/* Header & nav in dark mode */
+body.dark header {
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom-color: rgba(255,255,255,0.25);
+}
+
+body.dark header h1 {
+    border-color: rgba(255,255,255,0.7);
+    box-shadow: -3px -3px 5px #ff4d00, 3px 3px 6px rgba(0,0,0,0.8);
+}
+
+body.dark header nav a {
+    color: #fdfdfd;
+}
+
+/* Cards / panels */
+body.dark .page-card,
+body.dark .page-card.wide {
+    background: rgba(20, 20, 20, 0.96);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    color: #f5f5f5;
+}
+
+/* Form controls */
+body.dark .form-container input,
+body.dark .form-container select,
+body.dark .form-container textarea {
+    background: #333;
+    color: #fdfdfd;
+    border-color: #666;
+}
+
+body.dark .form-container input:focus,
+body.dark .form-container select:focus,
+body.dark .form-container textarea:focus {
+    border-color: #ff6666;
+    box-shadow: 0 0 0 2px rgba(255,102,102,0.35);
+}
+
+/* Tables */
+body.dark .data-table {
+    background: #1e1e1e;
+    color: #f5f5f5;
+}
+
+body.dark .data-table th {
+    background: #660000;
+    color: #fff;
+}
+
+body.dark .data-table tr:nth-child(even) {
+    background: #2a2a2a;
+}
+
+body.dark .data-table tr:hover {
+    background: #3a0000;
+}
+
+/* Notes & footer */
+body.dark .card-note {
+    color: #cccccc;
+}
+
+body.dark footer {
+    color: #cccccc;
+}
+
+/* Links in dark mode */
+body.dark a {
+    color: #ff7b80;
+}
